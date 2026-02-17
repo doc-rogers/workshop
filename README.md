@@ -257,7 +257,7 @@ graph LR
 | n8n | 🟡 Needs wiring | Automation hub |
 | Listmonk | 🟡 Needs rollup | Newsletter engine |
 | SMTP Relay | 🟡 Needs rollup | `newsletter.jcharlesassets.com` |
-| Antfarm | 🟡 Needs rollup | Worktree isolation |
+| Antfarm | ✅ Swarm live / 🟡 Orchestration | 5 containers running, worktree layer in progress |
 | Studio | 📐 Design | [doc-rogers/studio](https://github.com/doc-rogers/studio) |
 
 ---
