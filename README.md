@@ -43,7 +43,7 @@ Every project in this stack is open source. I don't use anything I can't fix, fo
 ---
 
 <!-- TOOL: OpenClaw -->
-> ### 🦞 [OpenClaw](https://github.com/openclaw/openclaw)
+> ### 🦞 [OpenClaw](https://openclaw.ai)
 > **The Executive Assistant — "Jarvis"**
 >
 > |  |  |
