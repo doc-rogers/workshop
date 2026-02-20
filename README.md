@@ -184,12 +184,12 @@ The equivalent of having six workbenches and never waiting for one to free up.
 ```mermaid
 graph LR
     subgraph LANES["AI Compute Lanes"]
-        A["Lane A · OpenClaw<br/>gemini-3-flash"]
-        B["Lane B · Foghorn<br/>gemini-2.5-flash"]
-        C["Lane C · JCharles<br/>gemini-2.5-flash"]
-        D["Lane D · Kimbal<br/>gemini-2.5-flash"]
-        E["Lane E · CDMX<br/>gemini-2.5-flash"]
-        F["Lane F · Memory<br/>flash-lite"]
+        A["Lane A · OpenClaw Gateway<br/>gemini-3-flash"]
+        B["Lane B · Gemini CLI<br/>gemini-2.5-flash"]
+        C["Lane C · Gemini CLI<br/>gemini-2.5-flash"]
+        D["Lane D · Gemini CLI<br/>gemini-2.5-flash"]
+        E["Lane E · OpenCode CLI<br/>gemini-2.5-flash"]
+        F["Lane F · Agent Memory<br/>flash-lite"]
     end
 
     style A fill:#e94560,stroke:#333,color:#fff
@@ -200,13 +200,13 @@ graph LR
     style F fill:#555,stroke:#333,color:#fff
 ```
 
-| Lane | Owner | Default Model | Fallback |
-|------|-------|--------------|----------|
-| **A** | OpenClaw | gemini-3-flash | claude-opus-4.6 → kimi-k2.5 |
-| **B** | Foghorn | gemini-2.5-flash | gemini-2.5-pro |
-| **C** | JCharles | gemini-2.5-flash | gemini-2.5-pro |
-| **D** | Kimbal | gemini-2.5-flash | gemini-2.5-pro |
-| **E** | CDMX | gemini-2.5-flash | gemini-2.5-pro |
+| Lane | CLI / Tool | Default Model | Fallback |
+|------|-----------|--------------|----------|
+| **A** | OpenClaw Gateway | gemini-3-flash | claude-opus-4.6 → kimi-k2.5 |
+| **B** | Gemini CLI | gemini-2.5-flash | gemini-2.5-pro |
+| **C** | Gemini CLI | gemini-2.5-flash | gemini-2.5-pro |
+| **D** | Gemini CLI | gemini-2.5-flash | gemini-2.5-pro |
+| **E** | OpenCode CLI | gemini-2.5-flash | gemini-2.5-pro |
 | **F** | Agent Memory | gemini-2.0-flash-lite | — |
 
 **Total cost of AI compute: $0.** All via Google OAuth free tier.
