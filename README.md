@@ -256,7 +256,7 @@ graph LR
 | OpenNotebook | ✅ Live | 531 vectorized sources |
 | n8n | ✅ Live | Automation hub, port 5678 |
 | Antfarm | ✅ Live | Dashboard on port 3333 |
-| Listmonk | 🟡 Needs SMTP relay | `newsletter.jcharlesassets.com` |
+| Listmonk | 🟡 Needs SMTP relay | Evaluating: Postal · Amazon SES · Mailgun |
 | MacBook Node | ✅ Paired | `system.run` · `browser` · `system.which` |
 
 ### Cuarzos (Production)
