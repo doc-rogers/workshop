@@ -202,7 +202,7 @@ graph LR
 
 | Lane | Owner | Default Model | Fallback |
 |------|-------|--------------|----------|
-| **A** | OpenClaw | gemini-3-flash | gemini-3-pro-high |
+| **A** | OpenClaw | gemini-3-flash | claude-opus-4.6 → kimi-k2.5 |
 | **B** | Foghorn | gemini-2.5-flash | gemini-2.5-pro |
 | **C** | JCharles | gemini-2.5-flash | gemini-2.5-pro |
 | **D** | Kimbal | gemini-2.5-flash | gemini-2.5-pro |
@@ -218,9 +218,9 @@ graph LR
 ```mermaid
 graph LR
     subgraph TS["Tailscale Mesh"]
-        L["lensman-brain-01<br/>Primary · x86 · 8GB"]
-        C["arisian-brain-01<br/>Claudia · ARM64"]
-        M["M2 MacBook Air<br/>Dev · ARM64"]
+        L["lensman-brain-01<br/>Primary · x86 · 16GB"]
+        C["arisian-brain-01<br/>Claudia · x86 · 8GB"]
+        M["M2 MacBook Air<br/>Dev · ARM64 · Node"]
     end
 
     L <-->|encrypted| C
@@ -233,31 +233,43 @@ graph LR
     style PUB fill:#2ecc71,stroke:#333,color:#fff
 ```
 
-| Resource | Spec |
-|----------|------|
-| **Provider** | Hetzner Cloud |
-| **CPU** | AMD EPYC-Genoa, 4 cores |
-| **RAM** | 8 GB |
-| **Disk** | 150 GB SSD |
-| **Monthly** | ~€20 |
+| Resource | Lensman | Cuarzos |
+|----------|---------|----------|
+| **Provider** | Hetzner Cloud | Hetzner Cloud |
+| **CPU** | AMD EPYC-Genoa, 4c | AMD, 4c |
+| **RAM** | 16 GB + 4 GB swap | 8 GB + 4 GB swap |
+| **Disk** | 150 GB SSD | 75 GB SSD |
+| **Monthly** | ~€20 total |  |
 
 ---
 
 ## 📋 What's Running
 
+### Lensman (Factory)
+
 | Tool | Status | Notes |
 |------|--------|-------|
-| OpenClaw | ✅ Live | Primary interface |
-| Gemini Swarm (×5) | ✅ Live | Parallel AI execution |
-| Redis | ✅ Live | Memory + pub/sub |
+| OpenClaw Gateway | ✅ Live | Dockerized, HTTPS via Tailscale Serve |
+| Agent Memory Server | ✅ Live | Redis-backed, port 8055 |
+| Gemini Swarm (×5) | ✅ Live | Foghorn, JCharles, Kimbal, CDMX, Claudia |
+| Redis Stack | ✅ Live | RediSearch + RedisJSON |
 | OpenNotebook | ✅ Live | 531 vectorized sources |
-| Supabase | ✅ Live | 12 containers |
-| NocoDB | ✅ Live | CRM on port 8585 |
-| SurrealDB | ✅ Live | MCP-accessible |
-| n8n | 🟡 Needs wiring | Automation hub |
-| Listmonk | 🟡 Needs rollup | Newsletter engine |
-| SMTP Relay | 🟡 Needs rollup | `newsletter.jcharlesassets.com` |
-| Antfarm | ✅ Swarm live / 🟡 Orchestration | 5 containers running, worktree layer in progress |
+| n8n | ✅ Live | Automation hub, port 5678 |
+| Antfarm | ✅ Live | Dashboard on port 3333 |
+| Listmonk | 🟡 Needs SMTP relay | `newsletter.jcharlesassets.com` |
+| MacBook Node | ✅ Paired | `system.run` · `browser` · `system.which` |
+
+### Cuarzos (Production)
+
+| Tool | Status | Notes |
+|------|--------|-------|
+| Supabase | ✅ Live | 12 containers, Postgres + Auth + Storage |
+| NocoDB | ✅ Live | CRM, port 8080 |
+| SurrealDB | ✅ Live | MCP-accessible, port 8000 |
+| Archon | ✅ Live | MCP + Agents + Work Orders |
+| Cuarzos OS (3-X) | ✅ Live | `lensmen.jcharlesassets.com` |
+| RabbitMQ | ✅ Live | Message broker |
+| Caddy Gateway | ✅ Live | TLS + reverse proxy |
 | Studio | 📐 Design | [doc-rogers/studio](https://github.com/doc-rogers/studio) |
 
 ---
